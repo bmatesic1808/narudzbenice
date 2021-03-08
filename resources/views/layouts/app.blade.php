@@ -19,6 +19,10 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
+        @if(session()->has('message'))
+            @include('partials._alert')
+        @endif
+
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -42,5 +46,6 @@
         @stack('modals')
 
         @livewireScripts
+        @stack('javascript')
     </body>
 </html>
