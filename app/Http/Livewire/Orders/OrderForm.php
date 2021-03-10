@@ -14,6 +14,7 @@ class OrderForm extends Component
     public $sellerAddress;
     public $sellerPhone;
     public $sellerOib;
+    public $sellerIban;
     public $paymentDue;
     public $deliveryDue;
     public $shippingType;
@@ -22,9 +23,10 @@ class OrderForm extends Component
     protected $rules = [
         'orderDate' => 'required',
         'sellerName' => 'required|string',
-        'sellerAddress' => 'required|string',
+        'sellerAddress' => 'string',
         'sellerOib' => 'string',
-        'paymentDue' => 'required|string',
+        'sellerIban' => 'required|string',
+        'paymentDue' => 'string',
         'deliveryDue' => 'string',
         'shippingType' => 'string',
     ];
@@ -53,13 +55,16 @@ class OrderForm extends Component
     {
         return view('livewire.orders.order-form', [
             'totalCostNoVat' => $this->calculateTotalCostNoVat(),
-            'orderNumber' => $this->generateOrderNumber($this->order)
+            'orderNumber' => $this->generateOrderNumber($this->order),
+            'orderYear' => $this->generateOrderYear($this->order)
         ]);
     }
 
     public function createOrUpdateOrder()
     {
         $this->validate();
+        $orderNumber = $this->generateOrderNumber($this->order);
+        $orderYear = $this->generateOrderYear($this->order);
 
         if ($this->order) {
             Order::find($this->order->id)->delete();
@@ -67,12 +72,14 @@ class OrderForm extends Component
 
         $order = Order::create([
             'user_id' => auth()->id(),
-            'order_number' => $this->generateOrderNumber(null),
+            'order_number' => $orderNumber,
+            'order_year' => $orderYear,
             'order_date' => $this->orderDate,
             'seller_name' => $this->sellerName,
             'seller_address' => $this->sellerAddress,
             'seller_phone' => $this->sellerPhone,
             'seller_oib' => $this->sellerOib,
+            'seller_iban' => $this->sellerIban,
             'delivery_due' => $this->deliveryDue,
             'shipping_type' => $this->shippingType,
             'payment_due' => $this->paymentDue
@@ -129,12 +136,18 @@ class OrderForm extends Component
             return $order->order_number;
         }
 
-        $lastOrder = Order::latest()->first();
-        if (!$lastOrder || $lastOrder->created_at->year < today()->year) {
+        $lastOrder = Order::where('order_year', today()->year)->orderBy('order_number', 'DESC')->first();
+
+        if (!$lastOrder || $lastOrder->order_year < today()->year) {
             return 1;
         }
 
         return $lastOrder->order_number + 1;
+    }
+
+    public function generateOrderYear(?Order $order): int
+    {
+        return $order->order_year ?? today()->year;
     }
 
     public function loadOrderModel(Order $order): void
@@ -144,6 +157,7 @@ class OrderForm extends Component
          $this->sellerAddress = $order->seller_address;
          $this->sellerPhone = $order->seller_phone;
          $this->sellerOib = $order->seller_oib;
+         $this->sellerIban = $order->seller_iban;
          $this->paymentDue = $order->payment_due;
          $this->deliveryDue = $order->delivery_due;
          $this->shippingType = $order->shipping_type;

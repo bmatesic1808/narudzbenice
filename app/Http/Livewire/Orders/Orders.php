@@ -14,12 +14,12 @@ class Orders extends Component
     public function render()
     {
         $searchString = '%' . $this->searchTerm . '%';
-
         return view('livewire.orders.orders', [
             'orders' => Order::where('order_number', 'like', $searchString)
                 ->with('user')
                 ->with('orderItems')
-                ->orderBy('created_at', 'DESC')
+                ->orderBy('order_year', 'DESC')
+                ->orderBy('order_number', 'DESC')
                 ->get()
         ]);
     }

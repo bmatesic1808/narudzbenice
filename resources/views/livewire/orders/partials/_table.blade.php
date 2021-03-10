@@ -46,7 +46,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="bg-indigo-50 text-indigo-500 py-1 px-3 font-medium rounded-full text-center hover:text-indigo-600 hover:bg-indigo-100 cursor-pointer">
                                             <a href="#">
-                                                {{ $order->order_number }}/{{ $order->created_at->year }}
+                                                {{ $order->order_number }}/{{ $order->order_year }}
                                             </a>
                                         </div>
                                     </td>

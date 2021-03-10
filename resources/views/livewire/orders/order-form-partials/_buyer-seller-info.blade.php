@@ -10,7 +10,7 @@
 
 <div class="w-1/2 overflow-hidden sm:w-full md:w-1/2 p-5 bg-gray-50">
     <div>
-        <x-jet-input id="sellerName" type="text" class="mt-1 block w-full" wire:model.defer="sellerName" placeholder="Ime i prezime" />
+        <x-jet-input id="sellerName" type="text" class="mt-1 block w-full" wire:model.defer="sellerName" placeholder="Ime i prezime ili naziv tvrtke" />
         <x-jet-input-error for="sellerName" class="mt-2" />
     </div>
     <div>

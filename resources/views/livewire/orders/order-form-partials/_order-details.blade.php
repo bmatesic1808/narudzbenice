@@ -1,5 +1,9 @@
 <div class="w-full overflow-hidden sm:w-full md:w-full p-5 text-gray-900 tracking-wider border-t border-b border-gray-500 bg-white">
-    {{ __('Žiroračun kupca (primatelja): IBAN HR602340009110182170') }}
+    {{ __('Žiroračun kupca (primatelja) - IBAN:') }}
+    <div>
+        <x-jet-input id="sellerIban" type="text" class="mt-1 block w-1/2" wire:model.defer="sellerIban" placeholder="HR22 4109 0061 0111 1111 6" />
+        <x-jet-input-error for="sellerIban" class="mt-2" />
+    </div>
 </div>
 
 <div class="w-1/2 overflow-hidden sm:w-full md:w-1/2 border-r border-gray-500 bg-gray-200 border-b border-gray-500">
@@ -18,7 +22,7 @@
     </div>
 
     <div class="bg-gray-200 py-2 mt-2 rounded-lg">
-        {{ $orderNumber }}/{{ today()->year }}
+        {{ $orderNumber }}/{{ $orderYear }}
     </div>
 </div>
 

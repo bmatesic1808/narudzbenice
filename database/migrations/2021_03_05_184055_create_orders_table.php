@@ -17,14 +17,16 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->integer('order_number');
+            $table->integer('order_year');
             $table->date('order_date');
             $table->string('seller_name');
             $table->string('seller_address');
-            $table->string('seller_phone');
-            $table->string('seller_oib');
-            $table->string('delivery_due');
-            $table->string('shipping_type');
-            $table->string('payment_due');
+            $table->string('seller_phone')->nullable();
+            $table->string('seller_oib')->nullable();
+            $table->string('seller_iban');
+            $table->string('delivery_due')->nullable();
+            $table->string('shipping_type')->nullable();
+            $table->string('payment_due')->nullable();
             $table->timestamps();
         });
     }
