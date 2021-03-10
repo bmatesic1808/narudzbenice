@@ -16,6 +16,8 @@ class Orders extends Component
         $searchString = '%' . $this->searchTerm . '%';
         return view('livewire.orders.orders', [
             'orders' => Order::where('order_number', 'like', $searchString)
+                ->orWhere('seller_name', 'like', $searchString)
+                ->orWhere('seller_address', 'like', $searchString)
                 ->with('user')
                 ->with('orderItems')
                 ->orderBy('order_year', 'DESC')

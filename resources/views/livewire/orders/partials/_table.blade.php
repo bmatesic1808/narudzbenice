@@ -44,11 +44,11 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="bg-indigo-50 text-indigo-500 py-1 px-3 font-medium rounded-full text-center hover:text-indigo-600 hover:bg-indigo-100 cursor-pointer">
-                                            <a href="#">
+                                        <a href="{{ route('orders.show', $order->id) }}" target="_blank" class="tracking-widest">
+                                            <div class="bg-indigo-50 text-indigo-500 py-1 px-3 font-medium rounded-full text-center hover:text-indigo-600 hover:bg-indigo-100 cursor-pointer">
                                                 {{ $order->order_number }}/{{ $order->order_year }}
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
