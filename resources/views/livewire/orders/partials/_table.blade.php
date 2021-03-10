@@ -7,16 +7,19 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Korisnik') }}
+                                    {{ __('Izdao') }}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     {{ __('Broj narudžbenice') }}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Kupac') }}
+                                    {{ __('Isporučitelj') }}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Vrijednost') }}
+                                    {{ __('Iznos (bez PDV-a)') }}
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    {{ __('Iznos (s PDV-om)') }}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                             </tr>
@@ -41,8 +44,10 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-gray-500">
-                                            {{ $order->order_number }}
+                                        <div class="bg-indigo-50 text-indigo-500 py-1 px-3 font-medium rounded-full text-center hover:text-indigo-600 hover:bg-indigo-100 cursor-pointer">
+                                            <a href="#">
+                                                {{ $order->order_number }}/{{ $order->created_at->year }}
+                                            </a>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -58,14 +63,19 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-gray-500">
-                                            {{ __('13 000 kn') }}
+                                        <div class="text-gray-900 text-sm">
+                                            {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-gray-900 text-sm">
+                                            {{ number_format($order->orderItems->sum('total_price_no_vat') + ($order->orderItems->sum('total_price_no_vat') * 0.25), 2) }} kn
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 
                                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                                            <div class="ml-3 absolute">
+                                            <div class="-ml-10 absolute">
                                                 <x-jet-dropdown align="right" width="60">
                                                     <x-slot name="trigger">
                                                         <span class="inline-flex rounded-md">
@@ -83,7 +93,7 @@
                                                     </x-slot>
 
                                                     <x-slot name="content">
-                                                        @include('livewire.users.partials._actions')
+                                                        @include('livewire.orders.partials._actions')
                                                     </x-slot>
                                                 </x-jet-dropdown>
                                             </div>

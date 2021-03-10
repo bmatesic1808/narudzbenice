@@ -1,6 +1,6 @@
 <div>
     <div class="max-w-7xl mx-auto pb-10 pt-2 sm:px-6 lg:px-8">
-        <form wire:submit.prevent="createNewOrder">
+        <form wire:submit.prevent="createOrUpdateOrder">
             <div class="flex flex-wrap overflow-hidden shadow-2xl border border-gray-500 rounded-lg">
                 @include('livewire.orders.order-form-partials._buyer-seller-header')
                 @include('livewire.orders.order-form-partials._buyer-seller-info')

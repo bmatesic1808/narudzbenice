@@ -19,7 +19,8 @@ class CreateOrderItemsTable extends Migration
             $table->string('name');
             $table->integer('quantity')->unsigned();
             $table->string('unit');
-            $table->decimal('unit_price_no_vat')->unsigned();
+            $table->decimal('unit_price_no_vat', 10, 2)->unsigned();
+            $table->decimal('total_price_no_vat', 10, 2)->unsigned();
             $table->timestamps();
         });
     }

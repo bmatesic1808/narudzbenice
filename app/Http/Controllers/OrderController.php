@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
@@ -14,5 +14,12 @@ class OrderController extends Controller
     public function create()
     {
         return view('orders.create');
+    }
+
+    public function edit($id)
+    {
+        return view('orders.edit', [
+            'order' => Order::findOrFail($id)
+        ]);
     }
 }

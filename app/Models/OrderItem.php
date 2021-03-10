@@ -15,10 +15,21 @@ class OrderItem extends Model
         'quantity',
         'unit',
         'unit_price_no_vat',
+        'total_price_no_vat',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 
     public function order(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function getAmountByMultiplyingQuantityAndPrice()
+    {
+        return $this->quantity * $this->unit_price_no_vat;
     }
 }

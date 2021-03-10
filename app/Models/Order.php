@@ -17,6 +17,8 @@ class Order extends Model
         'seller_address',
         'seller_phone',
         'seller_oib',
+        'delivery_due',
+        'shipping_type',
         'payment_due'
     ];
 

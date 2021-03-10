@@ -3,9 +3,6 @@
 </div>
 
 <div class="w-1/2 overflow-hidden sm:w-full md:w-1/2 border-r border-gray-500 bg-gray-200 border-b border-gray-500">
-    <div class="border-b border-gray-500 p-5">
-        {{ __('Naš znak i broj') }}
-    </div>
     <div class="p-5">
         {{ __('Nadnevak') }}
         <div>
@@ -15,9 +12,13 @@
     </div>
 </div>
 
-<div class="w-1/2 overflow-hidden sm:w-full md:w-1/2 uppercase text-2xl tracking-widest p-5 font-bold flex justify-center text-center items-center bg-gray-50 border-b border-gray-500">
+<div class="w-1/2 overflow-hidden sm:w-full md:w-1/2 uppercase text-2xl tracking-widest p-5 font-bold text-center bg-gray-50 border-b border-gray-500">
     <div>
         {{ __('Narudžbenica') }}
+    </div>
+
+    <div class="bg-gray-200 py-2 mt-2 rounded-lg">
+        {{ $orderNumber }}/{{ today()->year }}
     </div>
 </div>
 
@@ -46,9 +47,15 @@
 </div>
 
 <div class="w-1/3 overflow-hidden sm:w-full md:w-1/3 uppercase text-center tracking-wider p-5 text-sm border-r border-gray-500 border-t">
-
+    <div>
+        <x-jet-input id="deliveryDue" type="text" class="mt-1 block w-full" wire:model.defer="deliveryDue" placeholder="Rok isporuke" />
+        <x-jet-input-error for="deliveryDue" class="mt-2" />
+    </div>
 </div>
 
 <div class="w-1/3 overflow-hidden sm:w-full md:w-1/3 uppercase text-center tracking-wider p-5 text-sm border-t border-gray-500">
-
+    <div>
+        <x-jet-input id="shippingType" type="text" class="mt-1 block w-full" wire:model.defer="shippingType" placeholder="Način otpreme" />
+        <x-jet-input-error for="shippingType" class="mt-2" />
+    </div>
 </div>
