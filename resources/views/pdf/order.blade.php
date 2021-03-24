@@ -7,11 +7,13 @@
         <style>
             body {
                 font-family: DejaVu Serif;
+                font-size: 12px;
             }
 
             table {
                 border-collapse: collapse;
                 width: 100%;
+                font-size: 12px;
             }
 
             td, th {
@@ -114,7 +116,7 @@
                     <div class="text-bold">{{ \Carbon\Carbon::parse($order->order_date)->format('d. m. Y.') }}</div>
                 </td>
                 <td>
-                    <div style="font-size: 24px" class="uppercase text-bold center">{{ __('Narudžbenica') }}</div>
+                    <div style="font-size: 18px" class="uppercase text-bold center">{{ __('Narudžbenica') }}</div>
                     <div class="center" style="font-size: 20px">{{ $order->order_number }} / {{ $order->order_year }}</div>
                 </td>
             </tr>
@@ -177,7 +179,7 @@
 
             <tr class="text-bold bg-gray-light">
                 <td colspan="4">{{ __('UKUPNO:') }}</td>
-                <td colspan="2">{{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn</td>
+                <td colspan="2" style="text-align: right">{{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn</td>
             </tr>
         </table>
 

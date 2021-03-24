@@ -50,11 +50,6 @@
             <div class="tracking-wide">{{ number_format($totalCostNoVat, 2) }}&nbsp;kn</div>
         </div>
 
-        <div class="bg-gray-200 text-gray-900 font-semibold text-lg p-3 flex justify-between border-t border-gray-300">
-            <div class="tracking-widest">{{ __('UKUPNO (s PDV-om):') }}</div>
-            <div class="tracking-wide">{{ number_format($totalCostNoVat + ($totalCostNoVat * 0.25), 2) }}&nbsp;kn</div>
-        </div>
-
         <div class="flex justify-end mt-5">
             <x-jet-secondary-button wire:click.prevent="addNewItem">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-2">

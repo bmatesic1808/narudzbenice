@@ -10,7 +10,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index') || request()->routeIs('orders.create')" class="tracking-widest uppercase">
+                    <x-jet-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index') || request()->routeIs('orders.create') || request()->routeIs('orders.edit')" class="tracking-widest uppercase">
                         {{ __('Narudžbenice') }}
                     </x-jet-nav-link>
                     @if(auth()->user()->is_admin)

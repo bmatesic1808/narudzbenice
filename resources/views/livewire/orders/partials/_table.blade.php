@@ -18,9 +18,6 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     {{ __('Iznos (bez PDV-a)') }}
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    {{ __('Iznos (s PDV-om)') }}
-                                </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
                             </tr>
                         </thead>
@@ -65,11 +62,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-gray-900 text-sm">
                                             {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-gray-900 text-sm">
-                                            {{ number_format($order->orderItems->sum('total_price_no_vat') + ($order->orderItems->sum('total_price_no_vat') * 0.25), 2) }} kn
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
