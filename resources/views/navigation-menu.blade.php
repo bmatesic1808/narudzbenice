@@ -13,6 +13,9 @@
                     <x-jet-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index') || request()->routeIs('orders.create') || request()->routeIs('orders.edit')" class="tracking-widest uppercase">
                         {{ __('Narudžbenice') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('orders.exports.page') }}" :active="request()->routeIs('orders.exports.page')" class="tracking-widest uppercase">
+                        {{ __('Izvoz') }}
+                    </x-jet-nav-link>
                     @if(auth()->user()->is_admin)
                         <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')" class="tracking-widest uppercase">
                             {{ __('Korisnici') }}
