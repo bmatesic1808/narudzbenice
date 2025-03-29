@@ -61,7 +61,11 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-gray-900 text-sm">
+                                            @if ($order->order_year < 2023)
                                             {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn
+                                            @else
+                                            {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} EUR
+                                            @endif
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

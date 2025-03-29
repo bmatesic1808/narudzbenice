@@ -1,4 +1,4 @@
-<svg class="w-full h-auto" viewBox="0 0 457 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="w-72 h-auto" viewBox="0 0 457 117" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0)">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M0.628601 0.824142H45.7442H46.1951H91.3107L91.2476 35.8386C87.7102 76.343 69.4717 101.062 46.1052 115.787V115.959L45.9697 115.873L45.8341 115.959V115.787C22.4673 101.062 4.22913 76.343 0.691674 35.8386L0.628601 0.824142Z" fill="#DA0023" stroke="#1B1918" stroke-width="1.19803" stroke-linejoin="round"/>
         <path fill-rule="evenodd" clip-rule="evenodd" d="M28.316 28.9861C18.0714 34.1452 11.8566 25.431 12.3069 19.2803C12.7169 13.6829 19.1552 6.85924 28.1355 11.5648C16.1653 11.1491 14.9468 28.8035 28.316 28.9861Z" fill="white" stroke="#1B1918" stroke-width="0.358679" stroke-linejoin="round"/>

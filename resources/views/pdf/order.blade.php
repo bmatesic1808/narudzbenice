@@ -172,14 +172,32 @@
                     <td style="width: 35%; padding: 10px 5px">{{ $item->name }}</td>
                     <td style="padding: 10px 5px">{{ $item->unit }}</td>
                     <td style="padding: 10px 5px">{{ $item->quantity }}</td>
-                    <td style="padding: 10px 5px">{{ number_format($item->unit_price_no_vat, 2) }} kn</td>
-                    <td style="padding: 10px 5px">{{ number_format($item->total_price_no_vat, 2) }} kn</td>
+                    <td style="padding: 10px 5px">
+                        @if ($order->order_year < 2023)
+                            {{ number_format($item->unit_price_no_vat, 2) }} kn
+                        @else
+                            {{ number_format($item->unit_price_no_vat, 2) }} EUR
+                        @endif
+                    </td>
+                    <td style="padding: 10px 5px">
+                        @if ($order->order_year < 2023)
+                            {{ number_format($item->total_price_no_vat, 2) }} kn
+                        @else
+                            {{ number_format($item->total_price_no_vat, 2) }} EUR
+                        @endif
+                    </td>
                 </tr>
             @endforeach
 
             <tr class="text-bold bg-gray-light">
                 <td colspan="4">{{ __('UKUPNO:') }}</td>
-                <td colspan="2" style="text-align: right">{{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn</td>
+                <td colspan="2" style="text-align: right">
+                    @if ($order->order_year < 2023)
+                        {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} kn
+                    @else
+                        {{ number_format($order->orderItems->sum('total_price_no_vat'), 2) }} EUR
+                    @endif
+                </td>
             </tr>
         </table>
 

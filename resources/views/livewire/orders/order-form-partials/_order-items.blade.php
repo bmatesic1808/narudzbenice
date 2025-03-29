@@ -31,7 +31,9 @@
                             <x-jet-input-error for="unit_price_no_vat" class="mt-2" />
                         </td>
                         <td class="py-3 px-2 bg-grey-lighter font-sans font-medium text-sm text-grey border-b border-grey-light">
-                            <div class="bg-gray-100 text-gray-700 font-bold text-lg rounded-lg p-1.5">{{ number_format(round($item['quantity'], 2) * round($item['unit_price_no_vat'], 2), 2) }}&nbsp;kn</div>
+                            <div class="bg-gray-100 text-gray-700 font-bold text-lg rounded-lg p-1.5">
+                                {{ number_format(round($item['quantity'], 2) * round($item['unit_price_no_vat'], 2), 2) }}&nbsp;EUR
+                            </div>
                         </td>
                         <td class="py-3 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">
                             <button type="button" class="bg-pink-100 text-pink-600 rounded-lg p-2 font-bold hover:bg-pink-200 hover:text-pink-700" wire:click.prevent="removeItem({{ $index }})">
@@ -47,7 +49,7 @@
 
         <div class="bg-gray-200 text-gray-900 font-semibold text-lg p-3 flex justify-between">
             <div class="tracking-widest">{{ __('UKUPNO (bez PDV-a):') }}</div>
-            <div class="tracking-wide">{{ number_format($totalCostNoVat, 2) }}&nbsp;kn</div>
+            <div class="tracking-wide">{{ number_format($totalCostNoVat, 2) }}&nbsp;EUR</div>
         </div>
 
         <div class="flex justify-end mt-5">
