@@ -15,6 +15,14 @@
     </div>
 
     @include('livewire.orders.partials._table')
+
+    <!-- Pagination -->
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white p-4 rounded-lg border border-gray-200 sm:rounded-lg">
+            {{ $orders->links() }}
+        </div>
+    </div>
+
     @include('livewire.orders.partials._delete')
 </div>
 

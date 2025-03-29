@@ -22,7 +22,7 @@ class Orders extends Component
                 ->with('orderItems')
                 ->orderBy('order_year', 'DESC')
                 ->orderBy('order_number', 'DESC')
-                ->get()
+                ->paginate(50)
         ]);
     }
 
